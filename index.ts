@@ -32,7 +32,32 @@ app.post('/send-email', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Failed to send email' });
   }
-});
+} );
+app.get('/email-status/:id', (req, res) => {
+  const emailId = req.params.id;
+  const emailService = new EmailService([new MockProvider1(), new MockProvider2()]);
+  const status = emailService.getEmailStatus(emailId);
+  
+  if (status) {
+    res.json(status);
+  } else {
+    res.status(404).json({ error: 'Email not found' });
+  }
+} );
+app.get('/provider-stats', (req, res) => {
+  const emailService = new EmailService([new MockProvider1(), new MockProvider2()]);
+  const stats = emailService.getProviderStats();
+  res.json(stats);
+} );
+app.get('/rate-limit-stats', (req, res) => {
+  const emailService = new EmailService([new MockProvider1(), new MockProvider2()]);
+  const stats = emailService.getRateLimitStats();
+  res.json(stats);
+} );
+app.listen(3000, () => {
+  console.log('Email service running on http://localhost:3000');
+} );
+
 // Example usage
 // async function example() {
 //   const provider1 = new MockProvider1();
