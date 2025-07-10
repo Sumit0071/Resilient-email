@@ -33,7 +33,7 @@ app.post('/send-email', async (req, res) => {
     res.status(500).json({ error: 'Failed to send email' });
   }
 } );
-app.get('/email-status/:id', (req, res) => {
+app.get('/email-status/:id', (req:express.Request, res:express.Response) => {
   const emailId = req.params.id;
   const emailService = new EmailService([new MockProvider1(), new MockProvider2()]);
   const status = emailService.getEmailStatus(emailId);
@@ -44,12 +44,12 @@ app.get('/email-status/:id', (req, res) => {
     res.status(404).json({ error: 'Email not found' });
   }
 } );
-app.get('/provider-stats', (req, res) => {
+app.get('/provider-stats', (req:express.Request, res:express.Response) => {
   const emailService = new EmailService([new MockProvider1(), new MockProvider2()]);
   const stats = emailService.getProviderStats();
   res.json(stats);
 } );
-app.get('/rate-limit-stats', (req, res) => {
+app.get('/rate-limit-stats', (req:express.Request, res:express.Response) => {
   const emailService = new EmailService([new MockProvider1(), new MockProvider2()]);
   const stats = emailService.getRateLimitStats();
   res.json(stats);
