@@ -1,0 +1,1 @@
+{"version":3,"file":"IEmailProvider.d.ts","sourceRoot":"","sources":["../../providers/IEmailProvider.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,gBAAgB,CAAC;AACvC,MAAM,WAAW,cAAc;IAC7B,IAAI,EAAE,MAAM,CAAC;IACb,SAAS,CAAC,KAAK,EAAE,KAAK,GAAG,OAAO,CAAC,OAAO,CAAC,CAAC;IAC1C,SAAS,IAAI,OAAO,CAAC;CACtB"}
